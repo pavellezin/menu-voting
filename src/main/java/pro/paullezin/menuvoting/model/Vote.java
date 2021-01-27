@@ -1,6 +1,8 @@
 package pro.paullezin.menuvoting.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,11 +22,13 @@ public class Vote extends BaseEntity {
     private LocalDate date;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "menu_id", nullable = false)
     @NotNull
     private Menu menu;
