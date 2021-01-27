@@ -13,7 +13,6 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class NamedEntity extends BaseEntity {
 
@@ -21,4 +20,8 @@ public class NamedEntity extends BaseEntity {
     @Column(name = "name", nullable = false)
     protected String name;
 
+    protected NamedEntity(Integer id, String name) {
+        super(id);
+        this.name = name;
+    }
 }
