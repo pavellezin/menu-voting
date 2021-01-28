@@ -22,4 +22,10 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Modifying
     @Secured("ROLE_ADMIN")
     Restaurant save (Restaurant restaurant);
+
+    @Override
+    @Transactional
+    @Modifying
+    @Secured("ROLE_ADMIN")
+    void deleteById(Integer id);
 }
