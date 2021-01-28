@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
 import pro.paullezin.menuvoting.model.Lunch;
+import pro.paullezin.menuvoting.model.Menu;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,9 +20,9 @@ public interface LunchRepository extends JpaRepository<Lunch, Integer> {
     @Query("SELECT l FROM Lunch l WHERE l.menu.date=:date")
     List<Lunch> findByDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date);
 
-    @RestResource(rel = "by-menu-id", path = "by-menu-id")
-    @Query("SELECT l FROM Lunch l WHERE l.menu.id=:id")
-    List<Lunch> findByMenuId(Integer id);
+    @RestResource(rel = "by-menu-id", path = "by-menu")
+    @Query("SELECT l FROM Lunch l WHERE l.menu=:menu")
+    List<Lunch> findByMenu(Menu menu);
 
     @Override
     @Transactional
