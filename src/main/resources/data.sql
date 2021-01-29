@@ -12,8 +12,8 @@ VALUES ('Basilio'),
        ('Takatak');
 
 INSERT INTO MENU(MENU_DATE, RESTAURANT_ID)
-VALUES (NOW(), 1),
-       (NOW(), 2);
+VALUES ('2021-01-29', 1),
+       ('2021-01-29', 2);
 
 INSERT INTO LUNCH (NAME, PRICE, MENU_ID)
 VALUES ('Salat', 500, 1),
